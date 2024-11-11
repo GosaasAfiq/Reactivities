@@ -7,9 +7,9 @@ import { Link } from "react-router-dom";
 import { format } from "date-fns";
 
 const panes = [
-    {MenuItem: 'Future Events', pane: {key: 'future'}},
-    {MenuItem: 'Past Events', pane: {key: 'past'}},
-    {MenuItem: 'Hosting', pane: {key: 'hosting'}}
+    {menuItem: 'Future Events', pane: {key: 'future'}},
+    {menuItem: 'Past Events', pane: {key: 'past'}},
+    {menuItem: 'Hosting', pane: {key: 'hosting'}}
 ];
 
 export default observer(function ProfileActivities() {
@@ -20,7 +20,7 @@ export default observer(function ProfileActivities() {
         loadUserActivities(profile!.username);
     }, [loadUserActivities,profile]);
 
-    const handleTabChange = (e: SyntheticEvent, data: TabProps) => {
+    const handleTabChange = (_: SyntheticEvent, data: TabProps) => {
         loadUserActivities(profile!.username,panes[data.activeIndex as number].pane.key);
     };
 

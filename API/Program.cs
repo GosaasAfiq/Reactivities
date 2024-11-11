@@ -28,15 +28,19 @@ if (app.Environment.IsDevelopment())
 {
     app.UseSwagger();
     app.UseSwaggerUI();
-}
+} 
 
 app.UseCors("CorsPolicy");
 
 app.UseAuthentication();
 app.UseAuthorization();
 
+app.UseDefaultFiles();
+app.UseStaticFiles();
+
 app.MapControllers();
 app.MapHub<ChatHub>("/chat");
+app.MapFallbackToController("Index","Fallback");
 
 using var scope = app.Services.CreateScope();   //using = when one particular method is finished anything inside it, is gonna be exposed (like scope)
 var services = scope.ServiceProvider;
